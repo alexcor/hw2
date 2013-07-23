@@ -8,8 +8,8 @@
       %th Rating
       %th= link_to "Release Date", movie_path(:sort => 'release_date'), :id=>'release_date_header'
       %th More Info
-  %tbody
-    - @movies.each do |movie|
+  %tbody 
+  	- @movies.each do |movie|
       %tr
         %td= movie.title 
         %td= movie.rating
