@@ -22,6 +22,7 @@ class MoviesController < ApplicationController
       redirect_to :sort => sort and return
     end
 
+	@all_ratings = Movie.all_ratings
     @movies = Movie.all(ordering)
   end
 
