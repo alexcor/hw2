@@ -32,7 +32,7 @@ class MoviesController < ApplicationController
     end
 
 	# @movies = Movie.all(ordering)
-	@movies = Movie.find_all_by_rating(@my_ratings, ordering)
+	@movies = Movie.find_all_by_rating(@my_ratings.keys, ordering)
   end
 
   def new
