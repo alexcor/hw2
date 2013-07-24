@@ -17,13 +17,22 @@ class MoviesController < ApplicationController
       		ordering, @no_header = {:order => nil}, ''
     end   
 
+   	@all_ratings = Movie.all_ratings
+    @my_ratings = params[:ratings] || session[:ratings] || {}
+    
     if params[:sort] != session[:sort]
       session[:sort] = sort
-      redirect_to :sort => sort and return
+      redirect_to :sort => sort, :ratings => @my_ratings and return
     end
 
-	@all_ratings = Movie.all_ratings
-    @movies = Movie.all(ordering)
+    if params[:ratings] != session[:ratings] and @my_ratings != {}
+      session[:sort] = sort
+      session[:ratings] = @my_ratings
+      redirect_to :sort => sort, :ratings => @my_ratings and return
+    end
+
+	# @movies = Movie.all(ordering)
+	@movies = Movie.find_all_by_rating(@my_ratings, ordering)
   end
 
   def new
