@@ -14,7 +14,7 @@ class MoviesController < ApplicationController
     	when 'release_date'
       		ordering, @release_date_header = {:order => :release_date}, 'hilite'
       	else
-      		ordering, @no_header = {:order => :none}, ''
+      		ordering, @no_header = {:order => nil}, ''
     end   
 
     if params[:sort] != session[:sort]
