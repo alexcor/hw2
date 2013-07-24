@@ -13,11 +13,13 @@ class MoviesController < ApplicationController
       		ordering, @title_header = {:order => :title}, 'hilite'
     	when 'release_date'
       		ordering, @release_date_header = {:order => :release_date}, 'hilite'
+      	else
+      		ordering, @no_header = {:order => :none}, ''
     end   
 
     if params[:sort] != session[:sort]
       session[:sort] = sort
-      # redirect_to :sort => sort and return
+      redirect_to :sort => sort and return
     end
 
     @movies = Movie.all(ordering)
