@@ -18,7 +18,7 @@ class MoviesController < ApplicationController
     end   
 
    	@all_ratings = Movie.all_ratings
-    @my_ratings = params[:ratings] || session[:ratings] || {"G"=>1}
+    @my_ratings = params[:ratings] || session[:ratings] || {"G"=>1,"PG"=>1,"PG-13"=>1,"R"=>1}
     
     if params[:sort] != session[:sort]
       session[:sort] = sort
